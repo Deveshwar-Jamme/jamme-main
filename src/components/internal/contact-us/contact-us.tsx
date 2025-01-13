@@ -139,7 +139,7 @@ const CreateUserForm: React.FC = () => {
             id="name"
             {...register("name")}
             placeholder="Name"
-            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-white text-sm focus:border-white"
+            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
 
@@ -148,7 +148,7 @@ const CreateUserForm: React.FC = () => {
             id="email"
             {...register("email")}
             placeholder="Email"
-            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-white text-sm focus:border-white"
+            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none  text-sm focus:border-white"
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
@@ -157,7 +157,7 @@ const CreateUserForm: React.FC = () => {
             id="companyName"
             {...register("companyName")}
             placeholder="Company Name"
-            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-white text-sm focus:border-white"
+            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
           />
           {errors.companyName && <p className="text-red-500 text-sm">{errors.companyName.message}</p>}
 
