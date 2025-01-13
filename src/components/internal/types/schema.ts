@@ -8,4 +8,5 @@ export const schema = z.object({
   country: z.string().nonempty("Country is required"),
   userType: z.string().nonempty("User type is required"),
   supportType: z.string().nonempty("Support type is required"),
+  reason: z.string().min(10, "Reason must be at least 10 characters long."),
 });

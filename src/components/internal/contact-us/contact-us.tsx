@@ -17,6 +17,7 @@ import { Card } from "@/components/ui/card";
 import JammelOGO from "@/assets/Icon 1.svg";
 import { Loader2, RotateCw } from "lucide-react";
 import { schema } from "../types/schema";
+import { Textarea } from "@/components/ui/textarea";
 
 type FormData = z.infer<typeof schema>;
 
@@ -160,6 +161,13 @@ const CreateUserForm: React.FC = () => {
             className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
           />
           {errors.companyName && <p className="text-red-500 text-sm">{errors.companyName.message}</p>}
+          <Textarea
+            id="reason"
+            {...register("reason")}
+            placeholder="Reason"
+            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
+          ></Textarea>
+          {errors.reason && <p className="text-red-500 text-sm">{errors.reason.message}</p>}
 
           <div className="flex items-center gap-2 w-full">
             <Controller
