@@ -135,41 +135,55 @@ const CreateUserForm: React.FC = () => {
             </div>
           </div>
 
-          <Input
-            type="text"
-            id="name"
-            {...register("name")}
-            placeholder="Name"
-            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
-          />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+          <div>
+            <Label className="ml-1 mb-2">Name:</Label>
+            <Input
+              type="text"
+              id="name"
+              {...register("name")}
+              placeholder="Name"
+              className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
+            />
+            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
 
-          <Input
-            type="email"
-            id="email"
-            {...register("email")}
-            placeholder="Email"
-            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none  text-sm focus:border-white"
-          />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+          </div>
+          <div>
+            <Label className="ml-1 mb-2">Email:</Label>
+            <Input
+              type="email"
+              id="email"
+              {...register("email")}
+              placeholder="Email"
+              className="w-full p-2 bg-transparent border-b border-gray-300 outline-none  text-sm focus:border-white"
+            />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-          <Input
-            type="text"
-            id="companyName"
-            {...register("companyName")}
-            placeholder="Company Name"
-            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
-          />
-          {errors.companyName && <p className="text-red-500 text-sm">{errors.companyName.message}</p>}
-          <Textarea
-            id="reason"
-            {...register("reason")}
-            placeholder="Reason"
-            className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
-          ></Textarea>
-          {errors.reason && <p className="text-red-500 text-sm">{errors.reason.message}</p>}
+          </div>
+          <div>
+            <Label className="ml-1 mb-2">Company Name:</Label>
+            <Input
+              type="text"
+              id="companyName"
+              {...register("companyName")}
+              placeholder="Company Name"
+              className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
+            />
+            {errors.companyName && <p className="text-red-500 text-sm">{errors.companyName.message}</p>}
+          </div>
 
-          <div className="flex items-center gap-2 w-full">
+          <div>
+            <Label className="ml-1 mb-2">Reason:</Label>
+            <Textarea
+              id="reason"
+              {...register("reason")}
+              placeholder="Reason"
+              className="w-full p-2 bg-transparent border-b border-gray-300 outline-none text-sm focus:border-white"
+            ></Textarea>
+            {errors.reason && <p className="text-red-500 text-sm">{errors.reason.message}</p>}
+          </div>
+
+          <div className="flex flex-col  gap-2 w-full">
+            <Label> Select Country</Label>
             <Controller
               name="country"
               control={control}
