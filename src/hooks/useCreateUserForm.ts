@@ -14,7 +14,7 @@ const useCreateUserForm = () => {
         data
       );
       console.log("Response:", response.data);
-      toast.success("User created successfully!");
+      toast.success("Your request has been successfully submitted, and we will be in touch with you soon!");
     } catch (error) {
       console.error("Error:", error);
       toast.error("Failed to create user.");
