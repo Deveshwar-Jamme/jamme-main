@@ -1,4 +1,4 @@
-import CSAE from '@/components/internal/csae/csae'
+import CSAE from '@/components/internal/csae/CSAEPolicy'
 const CsaePage = () => {
     return (
         <CSAE />
