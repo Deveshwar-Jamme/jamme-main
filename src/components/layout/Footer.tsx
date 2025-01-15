@@ -1,9 +1,10 @@
-import { Linkedin, Twitter, Instagram } from 'lucide-react';
+import { FaLinkedin, FaInstagram } from 'react-icons/fa'; // Importing LinkedIn and Instagram icons from react-icons/fa
 import PrivacyPopover from '../PrivarcyPopover';
 import TermsPopover from '../TermPopover';
 import FAQPopover from '../FAQPopover';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Twitter from "@/assets/X.svg"
 
 const Footer = () => {
     const [isPrivacyOpen, setPrivacyOpen] = useState<boolean>(false);
@@ -12,7 +13,7 @@ const Footer = () => {
 
     return (
         <>
-            <footer className="w-full h-[92px] flex flex-col lg:flex-row justify-between items-center lg:p-10 mb-10 gap-4  font-Chillax relative z-20">
+            <footer className="w-full h-[92px] flex flex-col lg:flex-row justify-between items-center lg:p-10 mb-10 gap-4 font-Chillax relative z-20">
                 <div className="flex justify-center items-center gap-4 lg:gap-5 flex-wrap">
                     <Link
                         to="/blogs"
@@ -48,9 +49,9 @@ const Footer = () => {
                         href="https://www.linkedin.com/company/jamme_app"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#101010] hover:text-[#ff4d00]"
+                        className="text-[#101010] "
                     >
-                        <Linkedin size={24} />
+                        <FaLinkedin size={24} />
                     </a>
                     <a
                         href="https://twitter.com/jamme_social"
@@ -58,7 +59,7 @@ const Footer = () => {
                         rel="noopener noreferrer"
                         className="text-[#101010] hover:text-[#ff4d00]"
                     >
-                        <Twitter size={24} />
+                        <img src={Twitter} alt="X" />
                     </a>
                     <a
                         href="https://www.instagram.com/jamme_social/"
@@ -66,7 +67,7 @@ const Footer = () => {
                         rel="noopener noreferrer"
                         className="text-[#101010] hover:text-[#ff4d00]"
                     >
-                        <Instagram size={24} />
+                        <FaInstagram size={24} />
                     </a>
                 </div>
                 <p className="text-center text-black text-sm">

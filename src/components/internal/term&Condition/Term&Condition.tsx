@@ -1,3 +1,4 @@
+import SecondaryHeader from "@/components/layout/SecondaryHeader";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import React, { useRef, useState } from "react";
 
@@ -525,73 +526,76 @@ const TermsAndConditions: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col font-Inter">
-      {/* Banner */}
-      <div className="lg:mt-10">
-        <div className="container mx-auto py-6 px-4 flex flex-col gap-4 md:items-center md:justify-center">
-          <h1 className="scroll-m-20 text-6xl font-semibold tracking-wide lg:text-[80px]">
-            Terms and Conditions
-          </h1>
-          <span className="text-sm font-normal tracking-wider text-gray-600">
-            Last Updated: January 5, 2024
-          </span>
+    <>
+      <SecondaryHeader />
+      <div className="flex flex-col font-Inter">
+        {/* Banner */}
+        <div className="lg:mt-10">
+          <div className="container mx-auto py-6 px-4 flex flex-col gap-4 md:items-center md:justify-center">
+            <h1 className="scroll-m-20 text-6xl font-semibold tracking-wide lg:text-[80px]">
+              Terms and Conditions
+            </h1>
+            <span className="text-sm font-normal tracking-wider text-gray-600">
+              Last Updated: January 5, 2024
+            </span>
+          </div>
         </div>
-      </div>
-      {/* Main Content */}
-      <div className="flex flex-col-reverse md:flex-row md:mt-10 gap-4 md:px-10 lg:px-40">
-        <div className="flex-1 p-4">
-          <p className="pb-8 text-2xl font-semibold tracking-wider leading-6">
-            Please review our Terms and Conditions to understand your rights and responsibilities as a user.
-          </p>
-          {Object.keys(termsContent).map((key) => {
-            const termsKey = key as TermsKey;
-            return (
-              <div
-                key={termsKey}
-                ref={(el) => (sectionRefs.current[termsKey] = el)}
-                className="section-content mb-8"
-              >
-                <h2 className="capitalize tracking-wider text-lg font-semibold leading-tight text-left">
-                  {termsKey.replace(/([A-Z])/g, " $1").trim()}
-                </h2>
-                <p className="mt-4 text-gray-500 tracking-normal text-sm">
-                  {termsContent[termsKey]}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-        <div className="w-full md:w-72 lg:w-1/4 p-4">
-          <CardTitle className="font-bold text-xl mb-2 ml-2 tracking-wider">
-            Table of contents
-          </CardTitle>
-          <Card className="text-sm p-2">
+        {/* Main Content */}
+        <div className="flex flex-col-reverse md:flex-row md:mt-10 gap-4 md:px-10 lg:px-40">
+          <div className="flex-1 p-4">
+            <p className="pb-8 text-2xl font-semibold tracking-wider leading-6">
+              Please review our Terms and Conditions to understand your rights and responsibilities as a user.
+            </p>
             {Object.keys(termsContent).map((key) => {
               const termsKey = key as TermsKey;
               return (
-                <CardContent
+                <div
                   key={termsKey}
-                  className="relative cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-500 p-2 rounded flex items-center"
-                  onClick={() => handleSectionClick(termsKey)}
+                  ref={(el) => (sectionRefs.current[termsKey] = el)}
+                  className="section-content mb-8"
                 >
-                  {activeSection === termsKey && (
-                    <span
-                      className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-orange-500 w-1 h-5"
-                      style={{
-                        borderRadius: "4px 0 0 4px",
-                      }}
-                    />
-                  )}
-                  <span className="text-gray-900 font-semibold tracking-wider">
+                  <h2 className="capitalize tracking-wider text-lg font-semibold leading-tight text-left">
                     {termsKey.replace(/([A-Z])/g, " $1").trim()}
-                  </span>
-                </CardContent>
+                  </h2>
+                  <p className="mt-4 text-gray-500 tracking-normal text-sm">
+                    {termsContent[termsKey]}
+                  </p>
+                </div>
               );
             })}
-          </Card>
+          </div>
+          <div className="w-full md:w-72 lg:w-1/4 p-4">
+            <CardTitle className="font-bold text-xl mb-2 ml-2 tracking-wider">
+              Table of contents
+            </CardTitle>
+            <Card className="text-sm p-2">
+              {Object.keys(termsContent).map((key) => {
+                const termsKey = key as TermsKey;
+                return (
+                  <CardContent
+                    key={termsKey}
+                    className="relative cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-500 p-2 rounded flex items-center"
+                    onClick={() => handleSectionClick(termsKey)}
+                  >
+                    {activeSection === termsKey && (
+                      <span
+                        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-orange-500 w-1 h-5"
+                        style={{
+                          borderRadius: "4px 0 0 4px",
+                        }}
+                      />
+                    )}
+                    <span className="text-gray-900 font-semibold tracking-wider">
+                      {termsKey.replace(/([A-Z])/g, " $1").trim()}
+                    </span>
+                  </CardContent>
+                );
+              })}
+            </Card>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
