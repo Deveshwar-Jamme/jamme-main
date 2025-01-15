@@ -33,13 +33,13 @@ const Footer = () => {
                         Csae
                     </Link>
                     <Link
-                        to="/csae"
+                        to="/terms-and-conditions"
                         className="text-[#101010] text-sm transition-colors duration-300 hover:text-[#ff4d00]"
                     >
                         Terms
                     </Link>
                     <Link
-                        to="/csae"
+                        to="/faq"
                         className="text-[#101010] text-sm transition-colors duration-300 hover:text-[#ff4d00]"
                     >
                         FAQ'S

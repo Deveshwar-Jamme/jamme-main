@@ -2,7 +2,6 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import React, { useRef, useState } from "react";
 type PrivacyKey =
   | "overview"
-  | "effectiveDate"
   | "privacyPriority"
   | "dataCollection"
   | "sharingInfo"
@@ -22,51 +21,251 @@ type PrivacyKey =
   | "amendments"
   | "contactInfo";
 
-
-const privacyContent: Record<PrivacyKey, string> = {
-  overview: `At Jamme Ads, owned and operated by Voiaxis Limited, we prioritize your privacy and the responsible use of your data. As part of our commitment to privacy, this policy outlines how we collect, use, store, and share your personal data, as well as the steps we take to ensure compliance with global data protection laws, including GDPR, CCPA, and COPPA.
-    
-    This policy also addresses concerns regarding the ethical handling of user data, particularly that of minors, and our efforts to adhere to government regulations around privacy and security.
-    
-    By using Jamme Ads, you agree to this Privacy Policy. If you do not agree, please discontinue your use of our services.`,
-  effectiveDate: `Effective Date: July 7th 2021`,
-  privacyPriority: `Protecting your private information is our priority.`,
-  dataCollection: `Voiaxis may collect personal information, about you, including but not limited to your:
-    - Full Name
-    - Contact information (e.g., email, address, phone number, profession)
-    - Information about your devices (e.g., ISP information)
-    - Information about your voice (View, hear, and delete your voice recordings)
-    - Credit Card/Payment Information for processing by a third-party.
-    - Any other information you voluntarily provide to us including information about your personal identity such as name, location, preferences, and content you put on the Site if you use the Services.
+  const privacyContent: Record<PrivacyKey, JSX.Element> = {
+    overview: (
+      <>
+        <p className="mb-4 font-semibold">Privacy Overview</p>
+        <p className="mb-4">
+          At Jamme Ads, owned and operated by Voiaxis Limited, we prioritize your privacy and the
+          responsible use of your data. As part of our commitment to privacy, this policy outlines
+          how we collect, use, store, and share your personal data, as well as the steps we take to
+          ensure compliance with global data protection laws, including GDPR, CCPA, and COPPA.
+        </p>
+        <p className="mb-4">
+          This policy also addresses concerns regarding the ethical handling of user data,
+          particularly that of minors, and our efforts to adhere to government regulations around
+          privacy and security.
+        </p>
+        <p className="mb-4">
+          By using Jamme Ads, you agree to this Privacy Policy. If you do not agree, please
+          discontinue your use of our services.
+        </p>
+      </>
+    ),
+    privacyPriority: (
+      <p className="mb-4">Protecting your private information is our priority.</p>
+    ),
+    dataCollection: (
+      <>
+        <p className="mb-4 font-semibold">Data Collection</p>
+        <p className="mb-4">
+          Voiaxis may collect personal information about you, including but not limited to your:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Full Name</li>
+          <li>Contact information (e.g., email, address, phone number, profession)</li>
+          <li>Information about your devices (e.g., ISP information)</li>
+          <li>Information about your voice (view, hear, and delete your voice recordings)</li>
+          <li>Credit card/payment information for processing by a third-party</li>
+          <li>
+            Any other information you voluntarily provide to us, including information about your
+            personal identity such as name, location, preferences, and content you put on the Site
+            if you use the Services.
+          </li>
+        </ul>
+        <p className="mb-4 mt-4">
+          We do not collect any personal information about you unless you voluntarily provide it to
+          us. However, you may be required to provide certain personal information to us when you
+          elect to use the Services available on the Site. These may include:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Registering for an account on our Site</li>
+          <li>Entering information for a link sponsored by us or one of our partners</li>
+          <li>Signing up for special offers from selected third parties</li>
+          <li>Sending us an email message</li>
+          <li>
+            Submitting your credit card or other payment information for payment processing by a
+            third-party (e.g., Stripe)
+          </li>
+        </ul>
+      </>
+    ),
+    sharingInfo: (
+      <>
+        <p className="mb-4 font-semibold">Sharing Information</p>
+        <p className="mb-4">
+          Voiaxis may share data with trusted partners to help perform statistical analysis, send you
+          email or postal mail, provide customer support, or optimize your use of the Services. All
+          third parties are prohibited from using your personal information except to provide these
+          services to Voiaxis, and we will make reasonable efforts to ensure they are required to
+          maintain the confidentiality of your information.
+        </p>
+      </>
+    ),
+    userBehavior: (
+      <>
+        <p className="mb-4 font-semibold">User Behavior</p>
+        <p className="mb-4">
+          Voiaxis may at its sole discretion keep track of the websites and pages our users visit
+          within Voiaxis whether by desktop or mobile device, in order to determine what Voiaxis
+          services are the most popular. This data is used to deliver customized content and
+          advertising within Voiaxis to customers whose behavior indicates that they are interested
+          in a particular subject area.
+        </p>
+      </>
+    ),
+    autoCollection: (
+      <>
+        <p className="mb-4 font-semibold">Automatic Data Collection</p>
+        <p className="mb-4">
+          Information about your computer hardware, mobile devices, and software may be automatically
+          collected by Voiaxis. This information can include: your IP address, browser type, domain
+          names, access times, and referring website addresses. This information is used for the
+          operation of the service, to maintain quality of the service, and to provide general
+          statistics regarding use of the Site.
+        </p>
+      </>
+    ),
+    cookies: (
+      <>
+        <p className="mb-4 font-semibold">Cookies</p>
+        <p className="mb-4">
+          The Voiaxis website may use “cookies” to help you personalize your online experience. A
+          cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot
+          be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned
+          to you, and can only be read by a web server in the domain that issued the cookie to you.
+        </p>
+        <p className="mb-4">
+          One of the primary purposes of cookies is to provide a convenience feature to save you
+          time. For example, if you personalize Voiaxis pages or subdomains, or register with Voiaxis
+          or use of the Services, a cookie helps Voiaxis to recall your specific information on
+          subsequent visits.
+        </p>
+        <p className="mb-4">
+          You have the ability to accept or decline cookies. Most web browsers automatically accept
+          cookies, but you can usually modify your browser setting to decline cookies if you prefer.
+          If you choose to decline cookies, you may not be able to fully experience the interactive
+          features of the Site or the Services.
+        </p>
+      </>
+    ),
+    webWatch: (
+      <>
+        <p className="mb-4 font-semibold">Web Watch</p>
+        <p className="mb-4">
+          We may also use a technology called web watch to collect general information about your use
+          of our website and your use of special promotions or newsletters. The information we
+          collect by web beacons allows us to statistically monitor the number of people who open
+          our emails. Web beacons also help us to understand the behavior of our customers, members,
+          and visitors.
+        </p>
+      </>
+    ),
+    businessTransfer: (
+      <>
+        <p className="mb-4 font-semibold">Business Transfer</p>
+        <p className="mb-4">
+          If Voiaxis undergoes a Change of Control, your personal information may become an asset of
+          such a transaction. You acknowledge that such transfers may occur, and that any acquirer of
+          Voiaxis may continue to use your personal information as set forth in this policy.
+        </p>
+      </>
+    ),
+    links: (
+      <>
+        <p className="mb-4 font-semibold">Links to Third-Party Sites</p>
+        <p className="mb-4">
+          The Site may contain links to other third-party sites. Please be aware that we are not
+          responsible for the content or privacy practices of such other sites. We encourage our
+          users to be aware when they leave our site and to read the privacy statements of any other
+          site that collects personally identifiable information.
+        </p>
+      </>
+    ),
+    security: (
+      <>
+        <p className="mb-4 font-semibold">Security</p>
+        <p className="mb-4">
+          Voiaxis secures your personal information from unauthorized access, use, or disclosure.
+          Voiaxis uses SSL protocol for encrypting personal information. However, no data
+          transmission over the internet or any wireless network can be guaranteed to be 100%
+          secure.
+        </p>
+      </>
+    ),
+    minors: (
+      <>
+        <p className="mb-4 font-semibold">Minors</p>
+        <p className="mb-4">
+          Our services are not intended for—and we don't direct them to—anyone under 13. And that's
+          why we do not knowingly collect personal information from anyone under 13.
+        </p>
+      </>
+    ),
+    emailCommunication: (
+      <>
+        <p className="mb-4 font-semibold">Email Communication</p>
+        <p className="mb-4">
+          From time to time, we may contact you via email for the purpose of providing announcements,
+          promotional offers, alerts, confirmations, surveys, and/or other general communication. You
+          may opt out of such communication by contacting us.
+        </p>
+      </>
+    ),
+    externalStorage: (
+      <>
+        <p className="mb-4 font-semibold">External Storage</p>
+        <p className="mb-4">
+          We may store your data on servers provided by third party hosting vendors with whom we have
+          contracted.
+        </p>
+      </>
+    ),
+    gdprRights: (
+      <>
+        <p className="mb-4 font-semibold">GDPR Rights</p>
+        <p className="mb-4">
+          This section only applies to Users and Customers of the Services that are located in the
+          European Economic Area, United Kingdom, and/or Switzerland (collectively, the “Designated
+          Countries”) at the time of data collection. You may request to receive your personal
+          information in a structured, commonly used, and machine-readable format, and to have us
+          transfer your personal information directly to another “controller.”
+        </p>
+      </>
+    ),
+    craRights: (
+      <>
+        <p className="mb-4 font-semibold">CRA Rights</p>
+        <p className="mb-4">
+          The CRA provides British residents with specific rights regarding their personal
+          information. You have the right to request that Voiaxis disclose certain information to you
+          about our collection and use of your personal information over the past 12 months.
+        </p>
+      </>
+    ),
+    craDeletion: (
+      <>
+        <p className="mb-4 font-semibold">CRA Deletion</p>
+        <p className="mb-4">
+          You have the right to request that we delete any of your personal information that we
+          collected from you and retained, subject to certain exceptions.
+        </p>
+      </>
+    ),
+    amendments: (
+      <>
+        <p className="mb-4 font-semibold">Amendments</p>
+        <p className="mb-4">
+          We reserve the right to change this Privacy Policy from time to time. Your continued use of
+          the Site and/or Services after such modifications will constitute your acknowledgment of
+          the modified Privacy Policy.
+        </p>
+      </>
+    ),
+    contactInfo: (
+      <>
+        <p className="mb-4 font-semibold">Contact Information</p>
+        <p className="mb-4">
+          Voiaxis LTD. 25, The Junction, Slough, London. SL2 5GE support@jamme.app
+        </p>
+      </>
+    ),
+  };
   
-    We do not collect any personal information about you unless you voluntarily provide it to us. However, you may be required to provide certain personal information to us when you elect to use the Services available on the Site. These may include:
-    - Registering for an account on our Site;
-    - Entering information for a link sponsored by us or one of our partners;
-    - Signing up for special offers from selected third parties;
-    - Sending us an email message;
-    - Submitting your credit card or other payment information for payment processing by a third-party (e.g., Stripe).`,
-  sharingInfo: `Voiaxis may share data with trusted partners to help perform statistical analysis, send you email or postal mail, provide customer support, or optimize your use of the Services and learn more about using a variety of tools including but not limited to artificial intelligence and machine learning applications we may use at our discretion. All third parties are prohibited from using your personal information except to provide these services to Voiaxis, and we will make reasonable efforts to ensure they are required to maintain the confidentiality of your information.`,
-  userBehavior: `Voiaxis may at its sole discretion keep track of the websites and pages our users visit within Voiaxis whether by desktop or mobile device, in order to determine what Voiaxis services are the most popular. This data is used to deliver customized content and advertising within Voiaxis to customers whose behavior indicates that they are interested in a particular subject area.`,
-  autoCollection: `Information about your computer hardware, mobile devices, and software may be automatically collected by Voiaxis. This information can include: your IP address, browser type, domain names, access times, and referring website addresses. This information is used for the operation of the service, to maintain quality of the service, and to provide general statistics regarding use of the Site.`,
-  cookies: `The Voiaxis website may use “cookies” to help you personalize your online experience. A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you, and can only be read by a web server in the domain that issued the cookie to you. One of the primary purposes of cookies is to provide a convenience feature to save you time. The purpose of a cookie is to tell the Web server that you have returned to a specific page. For example, if you personalize Voiaxis pages or subdomains, or register with Voiaxis or use of the Services, a cookie helps Voiaxis to recall your specific information on subsequent visits. This simplifies the process of recording your personal information, such as billing addresses, shipping addresses, and so on. When you return to the Site, the information you previously provided can be retrieved, so you can easily use the Voiaxis features that you customized. You have the ability to accept or decline cookies. Most Web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. If you choose to decline cookies, you may not be able to fully experience the interactive features of the Site or the Services. Third-party vendors may also use cookies to serve ads based on a user's past visits to our Site.`,
-  webWatch: `We may also use a technology called web watch to collect general information about your use of our website and your use of special promotions or newsletters. The information we collect by web beacons allows us to statistically monitor the number of people who open our emails. Web beacons also help us to understand the behavior of our customers, members, and visitors.`,
-  businessTransfer: `If Voiaxis undergoes a Change of Control, your personal information may become an asset of such a transaction. You acknowledge that such transfers may occur, and that any acquirer of Voiaxis may continue to use your personal information as set forth in this policy.`,
-  links: `The Site may contain links to other third-party sites. Please be aware that we are not responsible for the content or privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of any other site that collects personally identifiable information.`,
-  security: `Voiaxis secures your personal information from unauthorized access, use, or disclosure. Voiaxis uses SSL protocol for encrypting personal information. However, no data transmission over the internet or any wireless network can be guaranteed to be 100% secure.`,
-  minors: `Our services are not intended for—and we don't direct them to—anyone under 13. And that's why we do not knowingly collect personal information from anyone under 13.`,
-  emailCommunication: `From time to time, we may contact you via email for the purpose of providing announcements, promotional offers, alerts, confirmations, surveys, and/or other general communication. You may opt out of such communication by contacting us.`,
-  externalStorage: `We may store your data on servers provided by third party hosting vendors with whom we have contracted.`,
-  gdprRights: `This Section only applies to Users and Customers of the Services that are located in the European Economic Area, United Kingdom, and/or Switzerland (collectively, the “Designated Countries”) at the time of data collection. You may request to receive your personal information in a structured, commonly used, and machine-readable format, and to have us transfer your personal information directly to another “controller.”`,
-  craRights: `The CRA provides British residents with specific rights regarding their personal information. You have the right to request that Voiaxis disclose certain information to you about our collection and use of your personal information over the past 12 months.`,
-  craDeletion: `You have the right to request that we delete any of your personal information that we collected from you and retained, subject to certain exceptions.`,
-  amendments: `We reserve the right to change this Privacy Policy from time to time. Your continued use of the Site and/or Services after such modifications will constitute your acknowledgment of the modified Privacy Policy.`,
-  contactInfo: `Voiaxis LTD. <br/> 25, The Junction, Slough, London. SL2 5GE <br/> <a href="mailto:support@jamme.app" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #ff4d00;">support@jamme.app</a>`,
-};
 
 const PrivacyPolicy: React.FC = () => {
   const sectionRefs = useRef<Record<PrivacyKey, HTMLDivElement | null>>({
     overview: null,
-    effectiveDate: null,
     privacyPriority: null,
     dataCollection: null,
     sharingInfo: null,
@@ -103,7 +302,7 @@ const PrivacyPolicy: React.FC = () => {
             Privacy Policy
           </h1>
           <span className="text-sm font-normal tracking-wider text-gray-600">
-            Last Updated: January 14, 2025
+          Last Updated: January 5, 2024
           </span>
         </div>
       </div>
